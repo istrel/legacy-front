@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('lodash');
 var getClusters = require('get_clusters');
 
 describe('clusterize', function() {
@@ -10,5 +11,29 @@ describe('clusterize', function() {
     var markers = [firstMarker, secondMarker];
 
     expect( getClusters(markers) ).to.eql(markers);
+  });
+
+  it('returns two clusters for two parts of closely related markers', function() {
+    var firstCluster = _.times(10, function() {
+      return {
+        latitude: 25 + Math.random(),
+        longitude: 36 + Math.random()
+      }
+    });
+
+    var secondCluster = _.times(10, function() {
+      return {
+        latitude: -25 + Math.random(),
+        longitude: -36 + Math.random()
+      }
+    });
+
+    var shuffledMarkers =
+      _(firstCluster)
+        .union(secondCluster)
+        .shuffle()
+        .value();
+
+    expect( getClusters(shuffledMarkers) ).to.have.lengthOf(2);
   });
 });

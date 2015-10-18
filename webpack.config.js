@@ -39,19 +39,6 @@ module.exports = {
     postcss: [
         nested,
         cssnext,
-        doiuse({
-            onFeatureUsage: function(info) {
-                'use strict';
-                var source = info.usage.source;
-                // file is whole require path, joined with !'s.. we want the last part
-                var sourceFile = path.relative('.', source.input.file.split('!').pop());
-                var sourceLine = sourceFile + ':' + source.start.line;
-                // take out location info in message itself
-                var message = info.message.split(': ').slice(1).join(': ');
-                console.log('[doiuse]'.red + ' ' + sourceLine + ': ' + info.featureData.title + '\n');
-                console.log(wordwrap(4, process.stdout.columns - 1)(message) + '\n');
-            }
-        }),
         autoprefixer,
         csswring
     ],

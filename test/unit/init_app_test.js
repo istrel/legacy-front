@@ -34,6 +34,6 @@ describe('initMap', function() {
     var callback = Wishes.bind.firstCall.args[0];
     callback(markers);
 
-    sinon.assert.calledWith(renderWishes, getClusters(markers) );
+    sinon.assert.calledWith(renderWishes, getClusters(markers, 0.1) );
   });
 });

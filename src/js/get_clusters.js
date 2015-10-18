@@ -28,5 +28,8 @@ export default function getClusters(markers) {
           .each(function (cluster) {
             cluster.title = cluster.markers.length.toString();
           })
+          .map(function(cluster) {
+            return (cluster.markers.length > 1 ? cluster : cluster.markers[0]);
+          })
           .value();
 }

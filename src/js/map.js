@@ -1,11 +1,8 @@
 'use strict';
 
-import Google       from './google_maps';
+import Google from './google_maps';
+import { defaultLocation } from './config';
 
-const DEFAULT_CENTER = {
-  lat: -34.397,
-  lng: 150.644
-};
 const ZOOM = 10;
 
 const getCurrentLocation = new Promise( (resolve, reject) => {
@@ -28,7 +25,7 @@ const MapPromise = new Promise(resolve => {
 
     getCurrentLocation
       .then( renderMap )
-      .catch( renderMap.bind(null, DEFAULT_CENTER) );
+      .catch( renderMap.bind(null, defaultLocation) );
 
   });
 });

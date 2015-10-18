@@ -17,6 +17,11 @@
   "globals": {
     "$": true,
     "document": true,
-    "navigator": true
+    "navigator": true,
+    "browser": true,
+    "describe": true,
+    "it": true,
+    "expect": true,
+    "sinon": true
   }
 }

@@ -11,7 +11,7 @@ export default function initApp(renderWishes) {
   UserStatus.poll();
 
   Wishes.bind(function(wishes) {
-    renderWishes( getClusters(wishes) );
+    renderWishes( getClusters(wishes, 0.1) );
   });
   Wishes.poll();
 }

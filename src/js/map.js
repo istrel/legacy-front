@@ -9,16 +9,7 @@ const DEFAULT_CENTER = {
 const ZOOM = 10;
 
 const getCurrentLocation = new Promise( (resolve, reject) => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(pos => {
-      resolve({
-        lat: pos.coords.latitude,
-        lng: pos.coords.longitude
-      });
-    }, reject);
-  } else {
-    reject();
-  }
+  resolve(defaultLocation);
 });
 
 const MapPromise = new Promise(resolve => {

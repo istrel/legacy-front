@@ -36,4 +36,30 @@ describe('clusterize', function() {
 
     expect( getClusters(shuffledMarkers) ).to.have.lengthOf(2);
   });
+
+  it('returns proper value for first cluster', function() {
+    var firstCluster = _.times(10, function() {
+      return {
+        latitude: 25 + Math.random(),
+        longitude: 36 + Math.random()
+      }
+    });
+
+    var secondCluster = _.times(10, function() {
+      return {
+        latitude: -25 + Math.random(),
+        longitude: -36 + Math.random()
+      }
+    });
+
+    var shuffledMarkers =
+      _(firstCluster)
+        .union(secondCluster)
+        .shuffle()
+        .value();
+
+    var result = getClusters(shuffledMarkers);
+
+    expect(result[0].latitude).to.be.within(-25, -24);
+  });
 });

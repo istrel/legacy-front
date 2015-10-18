@@ -13,11 +13,20 @@ export default function getClusters(markers) {
     });
 
     if (properCluster) {
-      null
+      properCluster.markers.push(marker);
     } else {
-      clusters.push(marker);
+      clusters.push({
+        latitude: marker.latitude,
+        longitude: marker.longitude,
+        markers: [ marker ]
+      });
     }
   });
 
-  return _.sortBy(clusters, 'latitude');
+  return _(clusters)
+          .sortBy('latitude')
+          .each(function (cluster) {
+            cluster.title = cluster.markers.length.toString();
+          })
+          .value();
 }

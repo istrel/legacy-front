@@ -19,5 +19,5 @@ export default function getClusters(markers) {
     }
   });
 
-  return clusters;
+  return _.sortBy(clusters, 'latitude');
 }

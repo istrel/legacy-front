@@ -34,11 +34,11 @@ const CustomMarkerPromise = new Promise(resolve => {
 
           let title = document.createElement('span');
           title.className = 'wish-marker__title';
-          title.innerText = self.args.title;
+          title.innerHTML = self.args.title;
 
           let time = document.createElement('span');
           time.className = 'wish-marker__time';
-          time.innerText = 'до ' + moment(self.args.date).format('D MMM hh:mm');
+          time.innerHTML = 'до ' + moment(self.args.date).format('D MMM hh:mm');
 
           div.appendChild(image);
           div.appendChild(title);

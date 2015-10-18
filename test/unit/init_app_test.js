@@ -10,6 +10,22 @@ let _           = require('lodash');
 let initMap     = require('init_app');
 
 describe('initMap', function() {
+  beforeEach(function() {
+    [UserStatus, Wishes].forEach(obj => {
+      ['bind', 'poll'].forEach(method => {
+        sinon.stub(obj, method);
+      });
+    });
+  });
+
+  afterEach(function() {
+    [UserStatus, Wishes].forEach(obj => {
+      ['bind', 'poll'].forEach(method => {
+        obj[method].restore();
+      });
+    });
+  });
+
   it('renders clustered wishes', function() {
     var markers = _.times(20, function() {
       return {
@@ -18,12 +34,6 @@ describe('initMap', function() {
         id: Faker.random.number()
       };
     });
-
-    // sinon stubs
-    sinon.stub(UserStatus, 'bind');
-    sinon.stub(UserStatus, 'poll');
-    sinon.stub(Wishes, 'bind');
-    sinon.stub(Wishes, 'poll');
 
     // rewiring module
     var renderWishes = sinon.stub();

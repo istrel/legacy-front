@@ -3,10 +3,7 @@
 var Faker = require('faker');
 var Factory = require('rosie').Factory;
 var defaultLocation = require('./src/js/config').defaultLocation;
-
-function random(dispersion) {
-    return (Math.random() - 0.5) * dispersion;
-}
+var random = require('./test/helpers/random');
 
 Factory.define('wish')
     .sequence('id')

@@ -1,9 +1,14 @@
 'use strict';
 
 var Factory = require('./factories');
-var stub = require('./stubs').stub;
+var HttpStubs = require('./http_stubs');
 var match = require('sinon').match;
-var _ = require('underscore');
+var _ = require('lodash');
+
+var httpStubs = new HttpStubs();
+
+var stub = httpStubs.stub;
+
 
 var user = {
   status: 'authorized',
@@ -21,3 +26,5 @@ stub.withArgs( match.has('url', match(/\/wishes.json$/) ) )
   .returns(function(req, res) {
     res.json(wishes);
   });
+
+module.exports = httpStubs;

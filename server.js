@@ -2,7 +2,8 @@
 
 var express = require('express');
 var app = express();
-var Stubs = require('./stubs');
+var stubs = require('./stubs');
+var defaultStubs = require('./default_stubs');
 var webpackMiddleware = require('webpack-dev-middleware');
 var webpack = require('webpack');
 var config = require('./webpack.config');
@@ -14,10 +15,18 @@ require('./default_stubs');
 app.set('port', process.env.PORT || 3000);
 
 // stubs
-app.use(Stubs.middleware);
+app.use(stubs.middleware);
+// default stubs - fixtures
+app.use(defaultStubs.middleware);
 
 // webpack
-app.use(webpackMiddleware( webpack(config), {} ));
+app.use(webpackMiddleware( webpack(config), {
+  // display no info to console (only warnings and errors)
+  noInfo: false,
+
+  // display nothing to the console
+  quiet: true
+} ));
 
 // index.html
 app.get('/', function(req, res) {

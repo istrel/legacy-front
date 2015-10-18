@@ -2,6 +2,7 @@
 
 import UserStatus   from './user_status';
 import Wishes       from './wishes';
+import getClusters  from './get_clusters';
 
 export default function initApp(renderWishes) {
   UserStatus.bind(user => {
@@ -9,6 +10,8 @@ export default function initApp(renderWishes) {
   });
   UserStatus.poll();
 
-  Wishes.bind(renderWishes);
+  Wishes.bind(function(wishes) {
+    renderWishes( getClusters(wishes) );
+  });
   Wishes.poll();
 }

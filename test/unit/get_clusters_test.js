@@ -71,6 +71,16 @@ describe('clusterize', function() {
     it('returns three clusters', function() {
       expect( getClusters(this.shuffledMarkers) ).to.have.lengthOf(3);
     });
+
+    it('sets title for created clusters', function() {
+      var titles =
+        _( getClusters(this.shuffledMarkers) )
+          .pluck('title')
+          .sort()
+          .value();
+
+      expect(titles).to.eql(['4', '5', '6']);
+    });
   });
 
 });

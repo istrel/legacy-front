@@ -1,0 +1,44 @@
+{
+  "name": "front",
+  "version": "0.0.0",
+  "description": "Hackathon project to demonstrate involving of TDD",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Strelkov",
+  "license": "",
+  "devDependencies": {
+    "autoprefixer-core": "^5.1.11",
+    "babel-core": "^5.2.6",
+    "babel-loader": "^5.0.0",
+    "colors": "^1.1.0",
+    "css-loader": "^0.14.0",
+    "cssnext": "^1.4.0",
+    "cssnext-loader": "^1.0.1",
+    "csswring": "^3.0.4",
+    "doiuse": "^0.3.2",
+    "postcss": "^4.1.8",
+    "postcss-loader": "^0.4.1",
+    "postcss-nested": "^0.3.1",
+    "style-loader": "^0.12.1",
+    "webpack": "^1.8.11",
+    "webpack-dev-server": "^1.8.2",
+    "wordwrap": "1.0.0"
+  },
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "^4.15.35",
+    "exports-loader": "^0.6.2",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.4",
+    "google-maps": "^3.1.0",
+    "imports-loader": "^0.6.4",
+    "jquery": "^2.1.4",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.1",
+    "moment": "^2.10.6",
+    "snackbarjs": "git://github.com/FezVrasta/snackbarjs.git",
+    "url-loader": "^0.5.6"
+  }
+}

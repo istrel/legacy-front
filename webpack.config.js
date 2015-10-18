@@ -30,10 +30,10 @@ module.exports = {
                 loader: 'babel-loader'
             },
             // needed by bootstrap
-            { test: /\.(woff|woff2)$/,  loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-            { test: /\.ttf$/,    loader: "file-loader" },
-            { test: /\.eot$/,    loader: "file-loader" },
-            { test: /\.svg$/,    loader: "file-loader" }
+            { test: /\.(woff|woff2)$/,  loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
+            { test: /\.ttf$/,    loader: 'file-loader' },
+            { test: /\.eot$/,    loader: 'file-loader' },
+            { test: /\.svg$/,    loader: 'file-loader' }
         ]
     },
     postcss: [
@@ -42,5 +42,10 @@ module.exports = {
         autoprefixer,
         csswring
     ],
+
+    resolve: {
+        root: path.join(__dirname, 'src/js')
+    },
+
     plugins: []
 };

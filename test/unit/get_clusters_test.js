@@ -1,4 +1,6 @@
-var _ = require('lodash');
+'use strict';
+
+var getClusters = require('get_clusters');
 
 describe('clusterize', function() {
   it('returns markers as is', function() {

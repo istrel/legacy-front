@@ -1,5 +1,7 @@
 'use strict';
 
+_ = require('lodash');
+
 export default function getClusters(markers, factor) {
   factor = factor || 1;
 
@@ -29,6 +31,7 @@ export default function getClusters(markers, factor) {
           .sortBy('latitude')
           .each(function (cluster) {
             cluster.title = cluster.markers.length.toString();
+            cluster.id = _.pluck(cluster.markers, 'id').toString();
           })
           .map(function(cluster) {
             return (cluster.markers.length > 1 ? cluster : cluster.markers[0]);

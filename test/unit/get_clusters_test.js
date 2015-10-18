@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var getClusters = require('get_clusters');
+var Faker = require('faker');
 
 describe('clusterize', function() {
   it('returns markers as is', function() {
@@ -21,10 +22,19 @@ describe('clusterize', function() {
         return _.times(n, function() {
           return {
             latitude: lat + Math.random()  * factor,
-            longitude: lng + Math.random() * factor
+            longitude: lng + Math.random() * factor,
+            id: Faker.random.number()
           };
         })
       };
+    });
+
+    it('generates ids for clusters', function() {
+      var cluster = this.cluster(10, 25, 10);
+
+      expect( getClusters(cluster)[0].id ).to.be.equal(
+        _.pluck(cluster, 'id').join(',')
+      );
     });
 
     describe('with two clusters and 0.1 distance provided', function() {

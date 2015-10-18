@@ -1,10 +1,9 @@
 'use strict';
 
 import UserStatus   from './user_status';
-import renderWishes from './render_wishes';
 import Wishes       from './wishes';
 
-export default function initApp() {
+export default function initApp(renderWishes) {
   UserStatus.bind(user => {
     document.getElementById('karmaPoints').innerText = user.karma;
   });

@@ -6,6 +6,7 @@ require('./poll_responses');
 
 require('eonasdan-bootstrap-datetimepicker');
 
-import initApp from './init_app';
+import initApp      from './init_app';
+import renderWishes from './render_wishes'
 
-$(initApp);
+$(initApp.bind(null, renderWishes));

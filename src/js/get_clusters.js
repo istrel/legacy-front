@@ -1,6 +1,8 @@
 'use strict';
 
 export default function getClusters(markers, factor) {
+  factor = factor || 1;
+
   var clusters = [];
 
   function distance(lhs, rhs) {
@@ -8,15 +10,9 @@ export default function getClusters(markers, factor) {
   }
 
   markers.forEach(function(marker) {
-    if (factor) {
-      var properCluster = _.find(clusters, function(cluster) {
-        return distance(cluster, marker) < 0.2;
-      });
-    } else {
-      var properCluster = _.find(clusters, function(cluster) {
-        return distance(cluster, marker) < 2;
-      });
-    }
+    var properCluster = _.find(clusters, function(cluster) {
+      return distance(cluster, marker) < 2 * factor;
+    });
 
     if (properCluster) {
       properCluster.markers.push(marker);

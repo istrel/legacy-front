@@ -16,10 +16,12 @@ describe('clusterize', function() {
   describe('with clusters', function() {
     beforeEach(function() {
       this.cluster = function(n, lat, lng, factor) {
+        factor = factor || 1;
+
         return _.times(n, function() {
           return {
-            latitude: lat + Math.random()  * (factor || 1),
-            longitude: lng + Math.random() * (factor || 1)
+            latitude: lat + Math.random()  * factor,
+            longitude: lng + Math.random() * factor
           };
         })
       };

@@ -15,14 +15,31 @@ describe('clusterize', function() {
 
   describe('with clusters', function() {
     beforeEach(function() {
-      this.cluster = function(n, lat, lng) {
+      this.cluster = function(n, lat, lng, factor) {
         return _.times(n, function() {
           return {
-            latitude: lat + Math.random(),
-            longitude: lng + Math.random()
+            latitude: lat + Math.random()  * (factor || 1),
+            longitude: lng + Math.random() * (factor || 1)
           };
         })
       };
+    });
+
+    describe('with two clusters and 0.1 distance provided', function() {
+      beforeEach(function() {
+        var firstCluster  = this.cluster(10, 25, 36.0, 0.1);
+        var secondCluster = this.cluster(10, 25, 36.3, 0.1);
+
+        this.shuffledMarkers =
+          _(firstCluster)
+            .union(secondCluster)
+            .shuffle()
+            .value();
+      });
+
+      it('creates 2 clusters', function() {
+        expect( getClusters(this.shuffledMarkers, 0.1) ).to.have.lengthOf(2);
+      });
     });
 
     describe('with two clusters', function() {

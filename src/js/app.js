@@ -2,10 +2,6 @@
 
 require('../css/main.css');
 require('./custom_marker');
-require('./wish_form');
-require('./wish_popup');
-require('./show_messages');
-require('./gratify');
 require('./poll_responses');
 
 require('eonasdan-bootstrap-datetimepicker');

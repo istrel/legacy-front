@@ -2,7 +2,10 @@
 
 import moment from 'moment';
 import Google from './google_maps';
-import showWish from './wish_popup';
+
+const showWish = function(markerId) {
+  console.log(`triggered showWish with ${markerId} markerId`);
+};
 
 const renderedIds = [];
 

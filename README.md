@@ -1,5 +1,6 @@
 # legacy-front
-Example of Legacy Front-End application demonstrated for coverage with tests
+Example of Legacy Front-End application demonstrated for coverage with tests.
+See slides for that on https://istrel.github.io/
 
 ### Getting Started
 
